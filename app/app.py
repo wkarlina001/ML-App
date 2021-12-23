@@ -13,15 +13,15 @@ def hello_world():
     request_type_str = request.method
     if request_type_str == "GET":
 
-        return render_template('index.html', href="static/base.svg")
+        return render_template('index.html', href="app/static/base.svg")
     else:
         text = request.form['text']
         random_str = uuid.uuid4().hex
-        path = 'static/'+random_str+'.svg'
-        model_in = load('model.joblib')
-        make_picture('AgesAndHeights.pkl', model_in, floats_string_to_np_arr(text), path)
+        path = 'app/static/'+random_str+'.svg'
+        model_in = load('app/model.joblib')
+        make_picture('app/AgesAndHeights.pkl', model_in, floats_string_to_np_arr(text), path)
 
-        return render_template('index.html', href=path)
+        return render_template('index.html', href=path[4:])
 
 def floats_string_to_np_arr(floats_str):
     def is_float(s):
