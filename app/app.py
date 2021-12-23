@@ -13,7 +13,7 @@ def hello_world():
     request_type_str = request.method
     if request_type_str == "GET":
 
-        return render_template('index.html', href="app/static/base.svg")
+        return render_template('index.html', href="static/base.svg")
     else:
         text = request.form['text']
         random_str = uuid.uuid4().hex
